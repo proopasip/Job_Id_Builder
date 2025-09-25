@@ -1,4 +1,6 @@
-# created by proopasn, modified (fixed)
+# Main_v1.py
+# Created by proopasn
+# Contains all the Logic
 
 import sys
 import json
@@ -195,4 +197,5 @@ if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     window = MainApp()
     window.show()
+
     sys.exit(app.exec())
