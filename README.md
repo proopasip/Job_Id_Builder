@@ -35,6 +35,8 @@ It typically takes the form xxxxxxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx, where eac
 | players     | players     | players     |
 | job id      | job id      | job id      |
 
+select a server by clicking on top of the column
+
 ### 4. Then it build a link to join selected roblox's exact server
 
 Example join link: 
@@ -45,17 +47,19 @@ After you paste it you will join immediately
 
 ### 5. Paste it in any browser to join.
 
-## Requirements
+## 🛒 Requirements
 - Roblox player
+- Windows 10
 
-## Set up
+## ⚙ Set up
 1. Download .exe
 2. Download Preview
 3. Download List.json
 4. Create a folder and paste everything in it
 5. Launch .exe
 
-### If everythig done well. this window will show up
+### 👍 If everythig done well. this window will show up
 
-[]
+<img width="699" height="630" alt="App" src="https://github.com/user-attachments/assets/9b44e08c-3c71-4045-a62f-206d16f2bce9" />
 
+### ♨
