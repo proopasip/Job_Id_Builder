@@ -3,9 +3,9 @@
 ![Python](https://img.shields.io/badge/PyQT-76AB37?style=for-the-badge&logo=gear&logoColor=white)
 ![Python](https://img.shields.io/badge/API-48474F?style=for-the-badge&logo=gear&logoColor=white)
 ## 🌐What is Job id builder?
-♦ An executable programm, to sort and find the best one roblox's curent game server.
 
-♦ Helpful tool, to get rid of 400ms in game
+- An executable programm, to sort and find the best one roblox's curent game server.
+- Helpful tool, to get rid of 400ms in game
 
 ## 🧐 What is job id?
 
