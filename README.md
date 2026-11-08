@@ -6,8 +6,8 @@ Paste a game link (or a bare `PlaceId`), and the app asks Roblox for that game's
 public servers, filters them by ping and player count, and lists them best-ping
 first. Pick a row and it hands the exact server to your Roblox client.
 
-This is a **native Rust rewrite** of the project. The previous Electron version
-is kept under [`legacy/electron/`](legacy/electron) and is no longer built.
+This is a **native Rust rewrite** of the original Electron/Node application: one
+self-contained binary, with no Node.js and no bundled Chromium.
 
 ---
 
@@ -76,9 +76,6 @@ src/
   i18n.rs     the 7 languages — zero dependencies
   net.rs      Roblox Games API client (reqwest)
   ui.rs       the egui interface
-legacy/
-  electron/   the previous Electron/Node implementation
-  tools/      gen_i18n.py, which generated src/i18n.rs from the old locales.json
 ```
 
 `domain.rs` and `i18n.rs` deliberately depend on nothing but the standard
@@ -99,8 +96,7 @@ rustc --edition 2021 --test src/domain.rs -o /tmp/domain_test && /tmp/domain_tes
   cursor until it has enough servers.
 - The old "trending games" and "search games by name" features were **not**
   ported: they relied on `/v1/games/list`, which Roblox deprecated in 2024 and
-  which now returns an empty list. Their translations are still kept in
-  `legacy/electron/src/locales.json` if those features ever come back.
+  which now returns an empty list.
 - Joining a server uses the `roblox://` protocol, which browsers refuse to open,
   so the link is handed straight to the OS (`start` on Windows, `open` on macOS,
   `xdg-open` elsewhere).

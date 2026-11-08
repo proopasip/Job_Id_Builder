@@ -1,7 +1,7 @@
 //! Localisation for the UI.
 //!
 //! The translations themselves are ported verbatim from the original Electron build
-//! (`legacy/electron/src/locales.json`), so nothing that was already translated is lost.
+//! (`locales.json` in the original project), so nothing that was already translated is lost.
 //! This module is dependency-free and unit-tested, like [`crate::core`].
 
 #![allow(clippy::doc_markdown)]
