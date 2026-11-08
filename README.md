@@ -67,6 +67,38 @@ cargo test                 # 20 unit tests
 
 ---
 
+## 📦 Download prebuilt binaries
+
+Every [release](https://github.com/egefefefefef/Search_Server_for_Roblox_game/releases)
+has binaries attached, built by GitHub Actions:
+
+| Platform | Asset | Size |
+| --- | --- | --- |
+| Windows (64-bit) | `roblox-server-search-windows-x86_64.exe` | ~17 MB |
+| Linux (64-bit) | `roblox-server-search-linux-x86_64` | ~21 MB |
+
+The Windows build is a GUI-only executable — it opens no console window. On
+Linux you may need to mark the file executable and make sure the GTK/xkbcommon
+runtime libraries from the requirements section above are installed:
+
+```bash
+chmod +x roblox-server-search-linux-x86_64
+./roblox-server-search-linux-x86_64
+```
+
+### Cutting a new release
+
+```bash
+git tag v0.2.0 && git push origin v0.2.0
+```
+
+The release workflow builds on `ubuntu-latest` and `windows-latest` and attaches
+both binaries (plus the `Cargo.lock` that produced them) to the GitHub Release.
+It can also be started by hand from the Actions tab, which produces build
+artifacts without publishing a release.
+
+---
+
 ## 📁 Project layout
 
 ```
