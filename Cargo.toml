@@ -1,0 +1,28 @@
+[package]
+name = "roblox-server-search"
+version = "0.1.0"
+edition = "2021"
+description = "Find and join the fastest public servers of any Roblox game"
+license = "ISC"
+repository = "https://github.com/egefefefefef/Search_Server_for_Roblox_game"
+
+# The binary is called `roblox-server-search`; this keeps `cargo run` short.
+[[bin]]
+name = "roblox-server-search"
+path = "src/main.rs"
+
+[dependencies]
+# `persistence` is what lets eframe remember the chosen language and theme.
+eframe = { version = "0.37", features = ["persistence"] }
+egui = "0.37"
+# `blocking` keeps the networking code simple; every call happens on a worker
+# thread, so it never blocks the UI.
+reqwest = { version = "0.13", features = ["blocking", "json"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+[profile.release]
+# Trim the binary and optimise it for size-sensitive distribution.
+strip = true
+lto = true
+codegen-units = 1

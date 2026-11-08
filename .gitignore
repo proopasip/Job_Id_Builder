@@ -1,6 +1,11 @@
+# Rust build output
+/target
+
+# Legacy Electron build (see legacy/electron)
 node_modules/
 dist/
 out/
+
 .DS_Store
 *.log
 .env
