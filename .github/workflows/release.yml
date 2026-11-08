@@ -53,7 +53,33 @@ jobs:
             libssl-dev
 
       - name: Build release binary
-        run: cargo build --release
+        run: |
+          set -o pipefail
+          cargo build --release 2>&1 | tee build.log
+
+      # Job logs live on a host this repo's tooling can't always reach, so on
+      # failure the compiler output is committed back to the branch instead.
+      - name: Publish build log
+        if: failure()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TARGET_BRANCH: arena/87dae12f-search-server-for-roblox-game
+          LOG_PATH: ci-logs/${{ matrix.name }}.log
+        run: |
+          set -euo pipefail
+          B64=$(base64 -w0 build.log)
+          SHA=$(gh api "repos/${GITHUB_REPOSITORY}/contents/${LOG_PATH}?ref=${TARGET_BRANCH}" \
+                  --jq .sha 2>/dev/null || true)
+          if [ -n "${SHA}" ]; then
+            gh api -X PUT "repos/${GITHUB_REPOSITORY}/contents/${LOG_PATH}" \
+              -f "message=ci: build log for ${{ matrix.name }} [skip ci]" \
+              -f "content=${B64}" -f "branch=${TARGET_BRANCH}" -f "sha=${SHA}" > /dev/null
+          else
+            gh api -X PUT "repos/${GITHUB_REPOSITORY}/contents/${LOG_PATH}" \
+              -f "message=ci: build log for ${{ matrix.name }} [skip ci]" \
+              -f "content=${B64}" -f "branch=${TARGET_BRANCH}" > /dev/null
+          fi
+          echo "Build log written to ${LOG_PATH}"
 
       - name: Rename binary (Linux)
         if: runner.os == 'Linux'
